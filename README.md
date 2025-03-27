@@ -31,33 +31,33 @@ if ($module) {
     Write-Host -ForegroundColor Green "Module $ModName version $ReqVer has been installed."
 }
 
-#Connect to Azure AD
+#Connect to Azure AD <BR>
 Connect-AzureAD
 
-#Get AzureADDirectory Setting to validate if False
+#Get AzureADDirectory Setting to validate if False <BR>
 $null -eq (Get-AzureADDirectorySetting)
 
-#View the values including EnableMIPLabels
+#View the values including EnableMIPLabels <BR>
 Get-AzureADDirectorySetting | foreach values
 
-#Let's get Group settings
+#Let's get Group settings <BR>
 $settings = Get-AzureADDirectorySetting | where-object {$_.displayname -eq "Group.Unified"}
 
-#Let's make a variable and set it to True
+#Let's make a variable and set it to True <BR>
 $setTrue["EnableMIPLabels"] = "True"
 
-#Finally let's set the Azure AD Directory Setting [EnableMIPLabels] to True
+#Finally let's set the Azure AD Directory Setting [EnableMIPLabels] to True <BR>
 Set-AzureADDirectorySetting -Id $setTrue.Id -DirectorySetting $setTrue
 
-#Connect to Exchange Online
-Connect-ExchangeOnline -UserPrincipalName admin@rojasgcc.onmicrosoft.com
+#Connect to Exchange Online <BR>
+Connect-ExchangeOnline -UserPrincipalName admin@TENANT.onmicrosoft.com
 
-#Connect to Purview  
-Connect-IPPSSession -UserPrincipalName admin@rojasgcc.onmicrosoft.com
+#Connect to Purview  <BR>
+Connect-IPPSSession -UserPrincipalName admin@TENANT.onmicrosoft.com
 
-#Execute the label synchronization across services (SPO/Teams/M365 Groups)
-#Allow some time for the labels to show (usually a few hours)
+#Execute the label synchronization across services (SPO/Teams/M365 Groups) <BR>
+#Allow some time for the labels to show (usually a few hours) <BR>
 Execute-AzureAdLabelSync
 
-#Disconnect current session
+#Disconnect current session <BR>
 Disconnect-ExchangeOnline -Confirm:$false
