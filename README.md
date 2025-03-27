@@ -1,4 +1,4 @@
-# PurviewScripts
+# Set up Sensitivity Labels instruction script to M365 Groups, Microsoft Teams & SharePoint Online Sites
 Scripts needed to set things up in Microsoft Purview
 
 # Script begins here
