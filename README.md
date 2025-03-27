@@ -1,6 +1,7 @@
 # PurviewScripts
 Scripts needed to set things up in Microsoft Purview
 
+# Script begins here
 
 <##########################################################################################################
 Disclaimer
@@ -19,7 +20,7 @@ even if Microsoft has been advised of the  possibility of such damages.
 $ModName = 'ExchangeOnlineManagement'
 $version = '3.6.0'
 
-# Check if the module is installed
+#Check if the module is installed
 $module = Get-InstalledModule -Name $ModName -requiredversion $version
 
 if ($module) {
